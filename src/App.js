@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Button from 'material-ui/Button';
 
 class App extends Component {
   render() {
@@ -14,9 +15,9 @@ class App extends Component {
           <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         </header>
         <p/>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-          <i class="material-icons">add</i>
-        </button>
+        <Button>
+        Hello World
+      </Button>
       </div>
     );
   }
