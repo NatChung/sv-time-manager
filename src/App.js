@@ -1,23 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Button from 'material-ui/Button';
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
+import AddDialog from './component/addDialog'
+import CardGrid from './component/cardGrid'
+
 
 class App extends Component {
+
+  state = {
+    team:[
+      {
+        name:"Allen"
+      },
+      {
+        name:"Bird"
+      },
+      {
+        name:"Taixi"
+      },
+      {
+        name:"William"
+      },
+      {
+        name:"Eric"
+      },
+      {
+        name:"Jeff"
+      }
+    ]
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-          <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
-          <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        </header>
-        <p/>
-        <Button>
-        Hello World
-      </Button>
+      <div style={{margin: 'auto'}}>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <CardGrid team={this.state.team} />
+        <AddDialog hidden={true}/>
       </div>
     );
   }
