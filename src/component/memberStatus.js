@@ -1,0 +1,5 @@
+export const STOPED = 'stopped'
+export const PAUSED = 'paused'
+export const STARTED = 'started'
+export const DONE = 'done'
+export const CLOSED = 'closed'

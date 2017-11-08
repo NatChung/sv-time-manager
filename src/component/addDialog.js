@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-    Button,
     IconButton,
     Dialog,
     DialogTitle,
@@ -13,56 +12,62 @@ import {
 class AddDialog extends Component {
     
     state = {
-        time: 0,
+        hours: '',
         item: ''
     }
 
-    onItemChange = (event) => {
-        console.log(this.state)
+    onItemChange(event) {
         this.setState({
             ...this.state,
             item: event.target.value
         })
     }
 
-    onDurationChange = (event) => {
-        console.log(this.state)
+    onDurationChange(event) {
         this.setState({
             ...this.state,
-            time:  Math.floor(event.target.value * 3600)
+            hours:  event.target.value
         })
     }
 
-    onDialogDone = () => {
-        this.props.onAddJob({
-            name: this.state.name
+    onDialogDone() {
+        this.props.onAddJob(this.props.name, this.state.hours, this.state.item)
+        this.setState({
+            hours:0,
+            item:''
         })
     }
 
     onDialogCancle = () => {
         this.props.onCancel()
+        this.setState({
+            hours:0,
+            item:''
+        })
     }
 
-    render = () => {
+    render() {
         return (
             <Dialog open={!this.props.hidden} >
                 <DialogTitle>{this.props.name}</DialogTitle>
                 <DialogContent>
                     <Textfield
-                        onChange={this.onDurationChange}
+                        onChange={this.onDurationChange.bind(this)}
                         pattern="-?[0-9]*(\.[0-9]+)?"
                         error="Input is not a number!"
-                        label="Duration..."
+                        label="Input the hours!"
+                        value={this.state.hours.toString()}
                     />
                     <Textfield
-                        onChange={this.onItemChange}
-                        label="Item..."
+                        onChange={this.onItemChange.bind(this)}
+                        label="Input the job description!"
+                        value={this.state.item}
                         rows={5}
                     />
                 </DialogContent>
                 <DialogActions>
-                    <IconButton name="done" colored onClick={this.onDialogDone} />
-                    <IconButton name="close" onClick={this.onDialogCancle} style={{ color: 'red' }} />
+                    <IconButton name="done" colored onClick={this.onDialogDone.bind(this)} />
+                    <IconButton name="close" onClick={this.onDialogCancle.bind(this)} style={{ color: 'red' }} />
                 </DialogActions>
             </Dialog>
         )
