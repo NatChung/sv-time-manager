@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
     Button,
@@ -10,34 +10,70 @@ import {
     Textfield
 } from 'react-mdl';
 
-const AddDialog = (props) => (
-    <div>
-        <Dialog open={!
-            props.hidden}>
-            <DialogTitle>Allen</DialogTitle>
-            <DialogContent>
-                <Textfield
-                    onChange={() => { }}
-                    pattern="-?[0-9]*(\.[0-9]+)?"
-                    error="Input is not a number!"
-                    label="Number..."
-                />
-                <Textfield
-                    onChange={() => { }}
-                    label="Item..."
-                    rows={5}
-                />
-            </DialogContent>
-            <DialogActions>
-                <IconButton name="done" colored/>
-                <IconButton name="close" colored style={{color:'red'}} />
-        </DialogActions>
-        </Dialog>
-    </div>
-)
+class AddDialog extends Component {
+    
+    state = {
+        time: 0,
+        item: ''
+    }
+
+    onItemChange = (event) => {
+        console.log(this.state)
+        this.setState({
+            ...this.state,
+            item: event.target.value
+        })
+    }
+
+    onDurationChange = (event) => {
+        console.log(this.state)
+        this.setState({
+            ...this.state,
+            time:  Math.floor(event.target.value * 3600)
+        })
+    }
+
+    onDialogDone = () => {
+        this.props.onAddJob({
+            name: this.state.name
+        })
+    }
+
+    onDialogCancle = () => {
+        this.props.onCancel()
+    }
+
+    render = () => {
+        return (
+            <Dialog open={!this.props.hidden} >
+                <DialogTitle>{this.props.name}</DialogTitle>
+                <DialogContent>
+                    <Textfield
+                        onChange={this.onDurationChange}
+                        pattern="-?[0-9]*(\.[0-9]+)?"
+                        error="Input is not a number!"
+                        label="Duration..."
+                    />
+                    <Textfield
+                        onChange={this.onItemChange}
+                        label="Item..."
+                        rows={5}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <IconButton name="done" colored onClick={this.onDialogDone} />
+                    <IconButton name="close" onClick={this.onDialogCancle} style={{ color: 'red' }} />
+                </DialogActions>
+            </Dialog>
+        )
+    }
+}
 
 AddDialog.propTypes = {
     hidden: PropTypes.bool.isRequired,
+    onAddJob: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired
 }
 
-export default AddDialog
+export default AddDialog;

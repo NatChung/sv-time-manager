@@ -3,9 +3,9 @@ import { Grid, Cell } from 'react-mdl'
 import JobCard from './jobCard'
 
 
-const renderRow = (item, i) => (
+const renderRow = (member, i) => (
     <Cell col={6} key={i}>
-        <JobCard name={item.name} />
+        <JobCard member={member} />
     </Cell>
 )
 
