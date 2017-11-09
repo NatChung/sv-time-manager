@@ -17,8 +17,8 @@ class App extends Component {
     return (
       <div style={{margin: 'auto'}}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-        <Layout style={{background: 'url(http://www.getmdl.io/assets/demos/transparent.jpg) center / cover'}}>
-        <Header transparent title="StarVedia RD" >
+        <Layout >
+        <Header title="StarVedia RD" >
           <Navigation>
                 <a href="#">Team</a>
                 <a href="#">History</a>
