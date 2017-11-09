@@ -40,10 +40,23 @@ const createCardMenu = (props) => {
     }
 }
 
-const getColorFromStatus = (status) => {
+const getColorFromStatus = (status, rest) => {
     switch (status) {
+        case memberStatus.STARTED:{
+
+            if(rest <= 0)
+                return 'red'
+            else if(rest < 600 )
+                return 'Orange'
+            else if(rest < (600 * 2))
+                return 'GoldenRod '
+            else if(rest < (600 * 3))
+                return 'OliveDrab  '
+            else 
+                return 'green'
+            
+        } 
         case memberStatus.STOPED: return 'black'
-        case memberStatus.STARTED: return 'green'
         case memberStatus.PAUSED: return 'gray'
         default: return 'blue'
     }
@@ -56,9 +69,9 @@ const getTargeTime = (targetSeconds) => {
 
 const getFormattingRestOfTime = (restOfSeconds) => {
     let rest = restOfSeconds
-    let hours = Math.floor(rest / 3600)
+    let hours = Math.floor(rest) / 3600
     rest = (rest % 3600)
-    let minutes = Math.floor(rest / 60)
+    let minutes = Math.floor(rest) / 60
     let seconds = rest % 60
 
     return sprintf("%02d:%02d:%02d", hours, minutes, seconds)
@@ -71,7 +84,7 @@ const MemberCard = (props) => (
                 color: '#fff',
                 height: '90px',
                 alignItems: 'flex-start',
-                background: getColorFromStatus(props.member.status)
+                background: getColorFromStatus(props.member.status, props.member.doing.restOfSeconds)
             }}>
             <h5 style={{ marginTop: '0' }} >
                 {props.name}: {props.member.status}<br /><br />

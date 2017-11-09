@@ -19,6 +19,15 @@ export default {
     },
     done: []
   },
+  Clement:{
+    status: status.STOPED,
+    doing: {
+      targetSeconds: 0,
+      restOfSeconds: 0,
+      item: ''
+    },
+    done: []
+  },
   Taixi:{
     status: status.STOPED,
     doing: {
@@ -54,5 +63,14 @@ export default {
       item: ''
     },
     done: []
-  }
+  },
+  Ed:{
+    status: status.STOPED,
+    doing: {
+      targetSeconds: 0,
+      restOfSeconds: 0,
+      item: ''
+    },
+    done: []
+  },
 }
