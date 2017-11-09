@@ -5,7 +5,9 @@ import 'react-mdl/extra/material.js';
 import MemberList from './component/memberList'
 import {
     Header,
-    Navigation
+    Navigation,
+    Content,
+    Layout
 } from 'react-mdl';
 
 
@@ -15,13 +17,17 @@ class App extends Component {
     return (
       <div style={{margin: 'auto'}}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-        <Header title="StarVedia RD" >
+        <Layout style={{background: 'url(http://www.getmdl.io/assets/demos/transparent.jpg) center / cover'}}>
+        <Header transparent title="StarVedia RD" >
           <Navigation>
                 <a href="#">Team</a>
                 <a href="#">History</a>
             </Navigation>
         </Header>
-        <MemberList />
+        <Content>
+          <MemberList />
+        </Content>
+        </Layout>
         
       </div>
     );
