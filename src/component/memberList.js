@@ -100,6 +100,7 @@ MemberList.propTypes = {
 }
 
 function mapStateToProps(state) {
+    // console.log(state)
     return {
         team: state.team
     }

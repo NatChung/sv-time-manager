@@ -32,6 +32,11 @@ export default (state = teamInitialState, action) => {
             return {...state}
         
         case types.DONE:
+            let duration = state[action.name].doing.targetSeconds - state[action.name].doing.restOfSeconds
+            state[action.name].done.push({
+                duration,
+                item: state[action.name].doing.item
+            })
             state[action.name].status = memberStatus.STOPED
             return {...state}
 
