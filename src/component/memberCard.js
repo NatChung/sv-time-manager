@@ -50,7 +50,7 @@ const getColorFromStatus = (status) => {
 }
 
 const getTargeTime = (targetSeconds) => {
-    let number = Math.floor(targetSeconds / 3600)
+    let number = targetSeconds / 3600
     return number.toFixed((number % 1) ? 1 : 0)
 }
 
