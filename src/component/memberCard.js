@@ -78,7 +78,7 @@ const getFormattingRestOfTime = (restOfSeconds) => {
 }
 
 const MemberCard = (props) => (
-    <Card shadow={0} style={{ width: '512px', margin: 'auto' }}>
+    <Card shadow={0} style={{margin:'auto'  }}>
         <CardTitle
             style={{
                 color: '#fff',

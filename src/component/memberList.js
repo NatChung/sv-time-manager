@@ -64,7 +64,7 @@ class MemberList extends Component {
 
     renderRow(name, i) {
         return (
-            <Cell col={6} key={i}>
+            <Cell col={4} key={i}>
                 <MemberCard
                     name={name}
                     member={this.props.team[name]}
