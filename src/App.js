@@ -12,31 +12,26 @@ import {
 } from 'react-mdl';
 
 
-class App extends Component {
+const App = () => (
+  <div style={{ margin: 'auto' }}>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <Layout >
+      <Header title="StarVedia RD" >
+        <Navigation>
+          <Link exact to='/' >Team</Link>
+          <Link to='/history' >History</Link>
+        </Navigation>
+      </Header>
+      <Content >
+        <Switch>
+          <Route exact path='/' component={TeamPage} />
+          <Route path='/history' component={HistoryPage} />
+          <Route render={() => <h1>Not Found</h1>} />
+        </Switch>
+      </Content>
+    </Layout>
 
-  render() {
-    return (
-      <div style={{ margin: 'auto' }}>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <Layout >
-          <Header title="StarVedia RD" >
-            <Navigation>
-              <Link exact to='/' >Team</Link>
-              <Link to='/history' >History</Link>
-            </Navigation>
-          </Header>
-          <Content>
-            <Switch>
-              <Route exact path='/' component={TeamPage} />
-              <Route path='/history' component={HistoryPage} />
-              <Route render={() => <h1>Not Found</h1>} />
-            </Switch>
-          </Content>
-        </Layout>
-
-      </div>
-    );
-  }
-}
+  </div>
+)
 
 export default App;
