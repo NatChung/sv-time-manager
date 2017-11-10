@@ -1,5 +1,5 @@
 import * as types from '../actions/actionTypes'
-import * as memberStatus from '../component/memberStatus'
+import * as memberStatus from '../component/team/memberStatus'
 import teamInitialState from './teamInitialState'
 
 export default (state = teamInitialState, action) => {

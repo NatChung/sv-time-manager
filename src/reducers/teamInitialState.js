@@ -1,4 +1,4 @@
-import * as status from '../component/memberStatus'
+import * as status from '../component/team/memberStatus'
 
 export default {
   Allen:{

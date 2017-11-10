@@ -4,10 +4,10 @@ import { Grid, Cell } from 'react-mdl'
 import MemberCard from './memberCard'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as memberActions from '../actions/memberActions'
+import * as memberActions from '../../actions/memberActions'
 import AddDialog from './addDialog'
 
-class MemberList extends Component {
+class TeamPage extends Component {
 
     state = {
         dialogHidden: true,
@@ -94,7 +94,7 @@ class MemberList extends Component {
     }
 }
 
-MemberList.propTypes = {
+TeamPage.propTypes = {
     actions: PropTypes.object.isRequired,
     team: PropTypes.object.isRequired
 }
@@ -112,6 +112,6 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MemberList)
+export default connect(mapStateToProps, mapDispatchToProps)(TeamPage)
 
 
