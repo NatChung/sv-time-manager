@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-preset-node6": "^11.0.0",
+    "body-parser": "^1.18.2",
+    "emailjs": "^1.0.12",
+    "express": "^4.16.2",
     "material-ui": "^1.0.0-beta.20",
     "material-ui-icons": "^1.0.0-beta.17",
     "react": "^16.0.0",
@@ -20,6 +24,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon -w server --exec \"babel-node server\""
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "nodemon": "^1.12.1"
   }
 }
