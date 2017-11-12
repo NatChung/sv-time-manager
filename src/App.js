@@ -19,13 +19,13 @@ const App = () => (
       <Header title="StarVedia RD" >
         <Navigation>
           <Link exact to='/' >Team</Link>
-          <Link to='/history' >History</Link>
+          {/* <Link to='/history' >History</Link> */}
         </Navigation>
       </Header>
       <Content >
         <Switch>
           <Route exact path='/' component={TeamPage} />
-          <Route path='/history' component={HistoryPage} />
+          {/* <Route path='/history' component={HistoryPage} /> */}
           <Route render={() => <h1>Not Found</h1>} />
         </Switch>
       </Content>

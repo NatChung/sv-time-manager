@@ -13,7 +13,7 @@ export default class MailController{
         Object.keys(this._req.body).map((name, i) => {
             replyContent += `${name}:\n`
             this._req.body[name].done.map((_done, i) => {
-                replyContent += `  ${i}.${_done.item}\n`
+                replyContent += `  ${i+1}.${_done.item}\n`
             })
             replyContent += `\n`
         })
@@ -30,7 +30,7 @@ export default class MailController{
          .send({
             text:    this.content(), 
             from:    "Nat <nat@starvedia.com>", 
-            to:      "NatCung <nat.chung1@gmail.com>",
+            to:      "Jeffrey <jeffrey@starvedia.com>, NatCung <nat.chung1@gmail.com>",
             subject: this.today()+" RD daily"
          }, (err, message) => {
              if(err) throw err

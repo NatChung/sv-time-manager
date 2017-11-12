@@ -7,21 +7,10 @@ import {
     TableHeader,
     Button
 } from 'react-mdl'
-import fetch from 'node-fetch'
-import { log } from 'util';
 
 class HistoryPage extends Component {
 
-    sendMail() {
-        fetch('http://localhost:3003/mail', {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({...this.props.team})
-        })
-            .then(res => console.log(res))
-    }
+ 
 
     render() {
         return (
@@ -39,9 +28,6 @@ class HistoryPage extends Component {
                     <TableHeader numeric name="price" cellFormatter={(price) => `\$${price.toFixed(2)}`} tooltip="Price pet unit">Price</TableHeader>
                 </DataTable>
 
-                <p />
-
-                <Button raised onClick={this.sendMail.bind(this)} >Button</Button>
             </div>
 
         )

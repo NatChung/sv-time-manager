@@ -6,6 +6,23 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as memberActions from '../../actions/memberActions'
 import AddDialog from './addDialog'
+import fetch from 'node-fetch'
+
+let sent = false
+let sendMail = (team) => {
+    let date = new Date
+    if(sent===false && date.getHours() === 22 && date.getMinutes()===0){
+        sent= true
+        fetch('http://localhost:3003/mail', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({...team})
+        })
+            .then(res => console.log(res))
+    }
+}
 
 class TeamPage extends Component {
 
@@ -14,7 +31,7 @@ class TeamPage extends Component {
         dialogTime: 0,
         dialogName:''
     }
-
+    
     componentDidMount(){
         this.interval = setInterval(this.props.actions.countdownTime, 1000)
     }
@@ -100,7 +117,7 @@ TeamPage.propTypes = {
 }
 
 function mapStateToProps(state) {
-    // console.log(state)
+    sendMail(state.team)
     return {
         team: state.team
     }
