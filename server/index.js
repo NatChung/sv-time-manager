@@ -1,5 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser';
+import MailController from './controllers/mailController'
+
 
 const app = express();
 app.use(bodyParser.json({limit : "100kb"}));
@@ -10,8 +12,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/mail', (req, res) => {
-    console.log(req.body)
-    res.send('Ready to mail2')
+    (new MailController({req, res})).execute()
 })
 
 app.listen(3003, function () {
